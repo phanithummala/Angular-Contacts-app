@@ -1,0 +1,60 @@
+var app=angular.module('appmodule',['ngRoute']);
+app.config(['$routeProvider',function($routeProvider){
+    $routeProvider.
+    when('/AddContact',{
+        
+        templateUrl:'addContact.html',
+        controller:"addContactController"
+    })
+    .otherwise({redirectTo:'/'});
+}]);
+app.controller('appcontroller',['$scope',function($scope)
+{
+  $scope.contacts=
+  [
+      {
+          firstName:'Phanindra',
+          lastName:'Thummala',
+          FullName:'Thummala Phanindra',
+          EmailID:'phanithummala@gmail.com',
+          ContactNo:'7702112361'
+      },
+      {
+          firstName:'Niteesh',
+          lastName:'Chennoju',
+          FullName:'Niteesh Chennoju',
+          EmailID:'niteesh.chennoju@gmail.com',
+          ContactNo:'1234567890'},
+      {
+          
+          firstName:'Ramakrishna',
+          lastName:'Medidha',
+          FullName:'Ramakrishna Medidha',
+          EmailID:'ramakrishna@gmail.com',
+          ContactNo:'7894561230'
+      },
+      {
+          firstName:'Gopinath',
+          lastName:'Gopu',
+          FullName:'Gopinath Gopu',
+          EmailID:'gopi@gmail.com',
+          ContactNo:'7894561230'
+      }
+ ]; 
+$scope.orderBy = function(x) {
+    $scope.myOrderBy = x;
+  };
+ $scope.allcontstatus="true";
+// $scope.addcontstatus="false";
+}]);
+app.controller('addContactController',['$scope',function($scope)
+{
+    // var allconts=0;
+     $scope.addcontstatus="false";
+     //$scope.allcontstatus="false";
+     
+    // console.log($scope.allcontstatus);
+    // alert($scope.allcontstatus);
+}]);
+
+ 

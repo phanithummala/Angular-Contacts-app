@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html ng-app="appmodule">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>
+            Welcome to Contacts App
+        </title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+        <!--<script type="text/javascript" src="addContact."></script>-->
+    </head>
+<body>
+<h1><center><b>Welcome to Contacts App</b></center></h2>
+<nav>
+<a href="#AllContacts"  class="btn btn-info" ng-model="allcontstatus">All Contacts</a>
+<a href="#AddContact"   class="btn btn-info" ng-model="addcontstatus">Add Contact</a>
+</nav>
+<br>
+<div ng-controller="addContactController" ng-show="addcontstatus">
+<div ng-view></div>
+</div>
+<!--<div ng-controller="addContactController" ng-hide="allcontstatus">-->
+<div ng-controller="appcontroller" ng-show="allcontstatus">
+<input type="text" class="form-control" name="search" id="search" ng-model="searchfilter" placeholder="Search for your contacts"><br><br>
+<div class="container">  
+<div class="table-responsive">
+<table class="table table-hover">
+   <tr> 
+     <i class="fa fa-sort" aria-hidden="true"></i>
+        <th ng-click="orderBy('firstName')">  First Name</th>
+        <th ng-click="orderBy('lastName')">  Last Name</th>
+        <th ng-click="orderBy('FullName')">  Full Name</th>
+        <th ng-click="orderBy('EmailID')">  Email ID</th>
+        <th ng-click="orderBy('ContactNo')">  Contact Number</th>
+    </tr>
+    <tr ng-repeat="con in contacts |filter : searchfilter |orderBy:myOrderBy">
+        <td> {{con.firstName}} </td>
+        <td> {{con.lastName}}</td>
+        <td> {{con.FullName}}</td>
+        <td> {{con.EmailID}}</td>
+        <td> {{con.ContactNo}}</td>
+    </tr>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>
